@@ -29,8 +29,8 @@ def main():  # 最大公約数と最小公倍数を計算し、その結果と�
     l = lcm(a*b, g)
 
     # 表示
-    print("gcd: "+str(g))
-    print("lcm: "+str(l))
+    print('{:.100g}'.format(g))
+    print('{:.100g}'.format(l))
     print("calc time: " + str(getTime() - startTime) + "[ms]")
 
 
