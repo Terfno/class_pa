@@ -5,24 +5,22 @@ import time
 def getTime():
   return time.time()
 
-def isPrime(n):
-  if n==2:
+def isPrime(p):
+  if p==2:
     return True
-  if n==1 or n%2==0:
+  if p==1 or p%2==0:
     return False
 
-  for _ in range(10):
-    a = random.randint(2, n - 1)
+  for _ in range(10): # 試行10回
+    y = random.randint(2, p-1) # step1 choose y randomly(1<y<p)
 
-    if gcd(n, a) != 1:
-      return False
+    if gcd(p, y) != 1: return False # step2 gcd(p,y)!=1, p is a composite number.
 
-    if pow(a, n - 1, n) != 1:
-      return False
+    if pow(y, p-1, p) != 1: return False # step3 y^{p-1}≡k!=1, p is a composite number.
 
   return True
 
-def gcd(a, b):
+def gcd(a, b): # 前回作ったユークリッド互除法によるgcd
     if b != 0:
         return gcd(b, a % b)
     return a
