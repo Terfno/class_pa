@@ -11,7 +11,7 @@ def isPrime(n):
   if n==1 or n%2==0:
     return False
 
-  for k in range(10):
+  for _ in range(10):
     a = random.randint(2, n - 1)
 
     if gcd(n, a) != 1:
