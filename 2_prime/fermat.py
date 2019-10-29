@@ -1,24 +1,31 @@
 import math
+import random
 import time
 
 def getTime():
   return time.time()
 
-def isPrime(a):
-  if a==2:
+def isPrime(n):
+  if n==2:
     return True
-  if a==1 or a%2==0:
+  if n==1 or n%2==0:
     return False
 
-  ra = int(math.sqrt(a))
+  for k in range(10):
+    a = random.randint(2, n - 1)
 
-  for i in range(3,ra,2):
-    if i == 1:
-      continue
-    if a%i==0:
+    if gcd(n, a) != 1:
       return False
-  
+
+    if pow(a, n - 1, n) != 1:
+      return False
+
   return True
+
+def gcd(a, b):
+    if b != 0:
+        return gcd(b, a % b)
+    return a
 
 def main():
   inputnum = int(input("input 1 integer: "))
@@ -31,4 +38,5 @@ def main():
   
   print("calc time: " + str(getTime() - startTime) + "[ms]")
   print("composite")
+
 main()
