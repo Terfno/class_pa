@@ -5,18 +5,15 @@ def getTime():
   return time.time()
 
 def isPrime(a):
-  if a==1:
+  if a==1 or a%2==0:
     return False
   
   if a==2:
     return True
 
-  if a%2==0:
-    return False
-
   ra = int(math.sqrt(a))
 
-  for i in range(3,ra,1):
+  for i in range(3,ra,2):
     if i == 1:
       continue
     if a%i==0:
