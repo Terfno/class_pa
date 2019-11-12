@@ -1,5 +1,13 @@
 import random
 
+
+def r_rand():
+    r = random.randint(0, 17)
+    if(indexList[r] == 30 or indexList[r] == 31 or indexList[r] == 43):
+        r = r_rand()
+    return r
+
+
 indexList = list(range(1, 46, 1))
 random.shuffle(indexList)
 
@@ -12,14 +20,6 @@ for i in range(len(indexList)):
         index_eyeBad.append(i)
     if(indexList[i] == 43):
         index_eyeBad.append(i)
-
-
-def r_rand():
-    r = random.randint(0, 17)
-    if(indexList[r] == 30 or indexList[r] == 31 or indexList[r] == 43):
-        r = r_rand()
-    return r
-
 
 for i in index_eyeBad:
     if(i >= 18):
