@@ -9,7 +9,8 @@ def createQTable(board):
 
 def recordB(board, blog, code):
     record = [board, code]
-    return blog.append(record)
+    blog.append(record)
+    return blog
 
 
 def updateTable(qTable, blog, win):
@@ -17,18 +18,22 @@ def updateTable(qTable, blog, win):
         board = blog[i][0]
         column = blog[i][1]
         row = findRow(board)
-        if win:
-            qTable[row, column] += 1
+        if win==1:
+            qTable[row, column] += 2
+        elif win==2:
+            qTable[row, column] -= 2
         else:
-            qTable[row, column] -= 1
+            qTable[row, column] += 1
+
+    return qTable
 
 
 def findRow(board):
     index = 0
     for i in range(len(board)):
-        if board[i] == "x":
+        if board[i] == "o":
             coef = 1
-        elif board[i] == "o":
+        elif board[i] == "x":
             coef = 2
         else:
             coef = 0
