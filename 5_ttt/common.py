@@ -1,6 +1,7 @@
 import math
 import human
 import randman
+import ai
 
 
 # printing board
@@ -71,6 +72,6 @@ def oSelect():
 # input with select
 def inputer(board, symbol, id):
     if id == 1:
-        human.inputer(board, symbol)
+        return human.inputer(board, symbol)
     elif id == 2:
-        randman.inputer(board, symbol)
+        return randman.inputer(board, symbol)
