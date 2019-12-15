@@ -15,6 +15,7 @@ def gameLoop(fp, sp):
             common.inputer(board, "o", sp)
 
         common.printB(board)
+
         jadge = common.isFin(board)
         if jadge == "x" or jadge == "o":
             return jadge
