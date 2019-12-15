@@ -1,4 +1,6 @@
 import math
+import human
+import randman
 
 
 # printing board
@@ -44,10 +46,10 @@ def isFin(board):
 
         if len(xset) == 3:
             print("> win x player!")
-            return True
+            return "x"
         elif len(oset) == 3:
             print("> win o player!")
-            return True
+            return "o"
 
     return False
 
@@ -64,3 +66,11 @@ def oSelect():
     select = input(
         "\n> Which would you like to play for second attack?\n1:Human(You or your friend), 2:Random or 3:AI(not available): ")
     return int(select)
+
+
+# input with select
+def inputer(board, symbol, id):
+    if id == 1:
+        human.inputer(board, symbol)
+    elif id == 2:
+        randman.inputer(board, symbol)

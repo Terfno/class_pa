@@ -3,37 +3,31 @@ import human
 import randman
 
 
-def gameLoop():
-    # select for first attacker and second attacker
-    fp = common.xSelect()
-    sp = common.oSelect()
-
+def gameLoop(fp, sp):
     board = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
     common.printB(board)
 
     # game loop
     for i in range(len(board)):
         if i % 2 == 0:
-            if fp == 1:
-                human.inputHuman(board, "x")
-            elif fp == 2:
-                randman.inputRandom(board, "x")
+            common.inputer(board, "x", fp)
         else:
-            if sp == 1:
-                randman.inputRandom(board, "o")
-            elif sp == 2:
-                randman.inputRandom(board, "o")
+            common.inputer(board, "o", sp)
 
         common.printB(board)
-        if common.isFin(board):
-            return 0
+        jadge = common.isFin(board)
+        if jadge == "x" or jadge == "o":
+            return jadge
 
     print("draw")
-    return 0
+    return "draw"
 
 
 def main():
-    gameLoop()
+    # select for first attacker and second attacker
+    fp = common.xSelect()
+    sp = common.oSelect()
+    gameLoop(fp, sp)
 
 
 main()

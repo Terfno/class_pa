@@ -2,7 +2,7 @@ import common
 
 
 # input for human
-def inputHuman(board, symbol):
+def inputer(board, symbol):
     player = int(
         input("\n> Where would you like to put your symbol '" + symbol + "'? : "))
     print("")

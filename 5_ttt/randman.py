@@ -15,7 +15,7 @@ def getEmpty(board):
 
 
 # input for random
-def inputRandom(board, symbol):
+def inputer(board, symbol):
     availableFrame = getEmpty(board)
     code = availableFrame[random.randint(0, len(availableFrame) - 1)]
 
