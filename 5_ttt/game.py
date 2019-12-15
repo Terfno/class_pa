@@ -68,7 +68,7 @@ def main():
         printB(board)
         if isFin(board):
             return 0
-    
+
     print("draw")
     return 0
 
