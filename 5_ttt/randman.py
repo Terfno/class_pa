@@ -6,7 +6,9 @@ import common
 def getEmpty(board):
     emp = []
     for i in range(len(board)):
-        if board[i] != "x" or board[i] != "o":
+        if board[i] == "x" or board[i] == "o":
+            continue
+        else:
             emp.append(i)
 
     return emp
@@ -15,7 +17,10 @@ def getEmpty(board):
 # input for random
 def inputRandom(board, symbol):
     availableFrame = getEmpty(board)
-    code = availableFrame[random.randint(0, len(availableFrame))]
+    code = availableFrame[random.randint(0, len(availableFrame) - 1)]
+
+    print("randman> I put at " + str(code+1))
+    print("")
 
     return common.inputPlayer(
         board, symbol, code)

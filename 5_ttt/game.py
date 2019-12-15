@@ -4,12 +4,12 @@ import randman
 
 
 def gameLoop():
-    board = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
-    common.printB(board)
-
     # select for first attacker and second attacker
     fp = common.xSelect()
     sp = common.oSelect()
+
+    board = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+    common.printB(board)
 
     # game loop
     for i in range(len(board)):
