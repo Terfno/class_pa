@@ -1,9 +1,9 @@
 import numpy
 
 
-def createQTable(board):
-    columns = len(board)
-    rows = 3**len(board)
+def createQTable(length):
+    columns = length
+    rows = 3**length
     return numpy.zeros((rows, columns))
 
 
@@ -19,11 +19,11 @@ def updateTable(qTable, blog, win):
         column = blog[i][1]
         row = findRow(board)
         if win==1:
-            qTable[row, column] += 2
+            qTable[row, column] += 2/len(blog)
         elif win==2:
-            qTable[row, column] -= 2
+            qTable[row, column] -= 2/len(blog)
         else:
-            qTable[row, column] += 1
+            qTable[row, column] += 1/len(blog)
 
     return qTable
 

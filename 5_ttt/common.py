@@ -27,6 +27,32 @@ def inputPlayer(board, symbol, code):
 
 
 # judgement of win
+def isFinNP(board):
+    xsub = []
+    osub = []
+    win = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6],
+           [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
+
+    for i in range(len(board)):
+        if board[i] == "x":
+            xsub.append(i)
+        elif board[i] == "o":
+            osub.append(i)
+
+    for i in range(len(win)):
+        xset = []
+        oset = []
+        xset = list(set(xsub) & set(win[i]))
+        oset = list(set(osub) & set(win[i]))
+
+        if len(xset) == 3:
+            return "x"
+        elif len(oset) == 3:
+            return "o"
+
+    return False
+
+
 def isFin(board):
     xsub = []
     osub = []
