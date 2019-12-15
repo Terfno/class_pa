@@ -1,5 +1,6 @@
 import common
 import human
+import randman
 
 
 def main():
@@ -11,7 +12,7 @@ def main():
         if i % 2 == 0:
             human.inputHuman(board, "x")
         else:
-            human.inputHuman(board, "o")
+            randman.inputRandom(board, "o")
 
         common.printB(board)
         if common.isFin(board):
