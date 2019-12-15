@@ -1,4 +1,6 @@
 import common
+import human
+
 
 def main():
     board = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
@@ -7,9 +9,9 @@ def main():
     # game loop
     for i in range(len(board)):
         if i % 2 == 0:
-            board = common.inputPlayer(board, "x")
+            human.inputHuman(board, "x")
         else:
-            board = common.inputPlayer(board, "o")
+            human.inputHuman(board, "o")
 
         common.printB(board)
         if common.isFin(board):
