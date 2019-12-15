@@ -1,7 +1,20 @@
+# 三目並べ強化学習
+## todo
+* [x] 対戦環境作成
+* [x] ランダムくん作成
+* [ ] 学習用の各種メソッド作成
+  * [x] テーブル生成
+  * [x] ログ収集
+  * [ ] ログをもとにテーブル更新(学習)
+  * [ ] テーブルをもとに打つAIくん作成
+
+## env
+Python 3.7.5
+pip 19.3.1 from /usr/local/lib/python3.7/site-packages/pip (python 3.7)
+
 ## package
-* math
-* random
 * numpy
+* tqdm
 
 ## ref
 一部
