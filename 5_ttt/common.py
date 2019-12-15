@@ -50,3 +50,17 @@ def isFin(board):
             return True
 
     return False
+
+
+# player select for First
+def xSelect():
+    select = input(
+        "\n> Which would you like to play for first attack?\n1:Human(You or your friend), 2:Random or 3:AI(not available): ")
+    return select
+
+
+# player select for Second
+def oSelect():
+    select = input(
+        "\n> Which would you like to play for second attack?\n1:Human(You or your friend), 2:Random or 3:AI(not available): ")
+    return select

@@ -3,16 +3,26 @@ import human
 import randman
 
 
-def main():
+def gameLoop():
     board = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
     common.printB(board)
+
+    # select for first attacker and second attacker
+    fp = common.xSelect()
+    sp = common.oSelect()
 
     # game loop
     for i in range(len(board)):
         if i % 2 == 0:
-            human.inputHuman(board, "x")
+            if fp == 1:
+                human.inputHuman(board, "x")
+            elif fp == 2:
+                randman.inputRandom(board, "x")
         else:
-            randman.inputRandom(board, "o")
+            if sp == 1:
+                randman.inputRandom(board, "o")
+            elif sp == 2:
+                randman.inputRandom(board, "o")
 
         common.printB(board)
         if common.isFin(board):
@@ -20,6 +30,10 @@ def main():
 
     print("draw")
     return 0
+
+
+def main():
+    gameLoop()
 
 
 main()
