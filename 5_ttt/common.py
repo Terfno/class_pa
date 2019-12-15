@@ -17,12 +17,9 @@ def printB(board):
     return
 
 
-# get input from human player and apply game board
-def inputPlayer(board, symbol):
-    player = int(
-        input("\n> where would you like to put your symbol '" + symbol + "' : "))
-    print("")
-    board[player-1] = symbol
+# input to board with symbol and code
+def inputPlayer(board, symbol, code):
+    board[code] = symbol
     return board
 
 
