@@ -1,6 +1,7 @@
 import math
 
 
+# printing board
 def printB(board):
     width = int(math.sqrt(len(board)))
     for i in range(len(board)):
@@ -16,6 +17,7 @@ def printB(board):
     return
 
 
+# get input from human player and apply game board
 def inputPlayer(board, symbol):
     player = int(
         input("\n> where would you like to put your symbol '" + symbol + "' : "))
@@ -24,6 +26,7 @@ def inputPlayer(board, symbol):
     return board
 
 
+# judgement of win
 def isFin(board):
     xsub = []
     osub = []
