@@ -1,3 +1,5 @@
+import math
+
 def printB(board):
     width = int(math.sqrt(len(board)))
     for i in range(len(board)):

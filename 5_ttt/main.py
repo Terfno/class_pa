@@ -1,4 +1,3 @@
-import math
 from common import printB
 from common import isFin
 import human
