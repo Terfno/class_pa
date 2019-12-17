@@ -1,6 +1,3 @@
-import math
-
-
 def printB(board):
     width = int(math.sqrt(len(board)))
     for i in range(len(board)):
@@ -14,14 +11,6 @@ def printB(board):
             print(str(board[i])+" | ", end="")
     print("")
     return
-
-
-def inputPlayer(board, symbol):
-    player = int(
-        input("\n> where would you like to put your symbol '" + symbol + "' : "))
-    print("")
-    board[player-1] = symbol
-    return board
 
 
 def isFin(board):
@@ -52,25 +41,3 @@ def isFin(board):
             return True
 
     return False
-
-
-def main():
-    board = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
-    printB(board)
-
-    # game loop
-    for i in range(len(board)):
-        if i % 2 == 0:
-            board = inputPlayer(board, "x")
-        else:
-            board = inputPlayer(board, "o")
-
-        printB(board)
-        if isFin(board):
-            return 0
-
-    print("draw")
-    return 0
-
-
-main()
