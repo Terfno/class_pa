@@ -9,16 +9,21 @@ from tqdm import tqdm
 xwin = 0
 owin = 0
 draw = 0
+xqTable = learn.createQTable(9)
+oqTable = learn.createQTable(9)
 
 
-def gameloop(qTable, fp, sp):
+def gameloop(fp, sp, mode):
     global xwin
     global owin
     global draw
+    global xqTable
+    global oqTable
 
     # print("new game!")
     board = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
-    # common.printB(board)
+    if mode == 0:
+        common.printB(board)
 
     xblog = []
     oblog = []
@@ -27,95 +32,46 @@ def gameloop(qTable, fp, sp):
     for i in range(len(board)):
         if i % 2 == 0:
             if fp == 3:
-                code = ai.codeAINP(board, qTable)
+                code = ai.codeAINP(board, xqTable)
                 board = common.inputPlayer(board, "x", code)
                 xblog = learn.recordB(board, xblog, code)
             else:
                 board = common.inputer(board, "x", fp)
         else:
             if sp == 3:
-                code = ai.codeAINP(board, qTable)
+                code = ai.codeAINP(board, oqTable)
                 board = common.inputPlayer(board, "o", code)
                 oblog = learn.recordB(board, oblog, code)
             else:
                 board = common.inputer(board, "o", sp)
 
-        # common.printB(board)
+        if mode == 0:
+            common.printB(board)
 
         jadge = common.isFinNP(board)
         if jadge == "x":
-            qTable = learn.updateTable(qTable, xblog, 1)
-            qTable = learn.updateTable(qTable, oblog, 2)
+            xqTable = learn.updateTable(xqTable, xblog, 1)
+            oqTable = learn.updateTable(oqTable, oblog, 2)
             xwin += 1
-            return qTable
+            return 0
         elif jadge == "o":
-            qTable = learn.updateTable(qTable, oblog, 1)
-            qTable = learn.updateTable(qTable, xblog, 2)
+            oqTable = learn.updateTable(oqTable, oblog, 1)
+            xqTable = learn.updateTable(xqTable, xblog, 2)
             owin += 1
-            return qTable
+            return 0
 
-    qTable = learn.updateTable(qTable, xblog, 3)
-    qTable = learn.updateTable(qTable, oblog, 3)
+    xqTable = learn.updateTable(xqTable, xblog, 3)
+    oqTable = learn.updateTable(oqTable, oblog, 3)
     draw += 1
-    return qTable
-
-
-def gamewith(qTable, fp, sp):
-    global xwin
-    global owin
-    global draw
-
-    print("new game!")
-    board = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
-    common.printB(board)
-
-    xblog = []
-    oblog = []
-
-    # game loop
-    for i in range(len(board)):
-        if i % 2 == 0:
-            if fp == 3:
-                code = ai.codeAI(board, qTable)
-                board = common.inputPlayer(board, "x", code)
-                xblog = learn.recordB(board, xblog, code)
-            else:
-                board = common.inputer(board, "x", fp)
-        else:
-            if sp == 3:
-                code = ai.codeAI(board, qTable)
-                board = common.inputPlayer(board, "o", code)
-                oblog = learn.recordB(board, oblog, code)
-            else:
-                board = common.inputer(board, "o", sp)
-
-        common.printB(board)
-
-        jadge = common.isFin(board)
-        if jadge == "x":
-            qTable = learn.updateTable(qTable, xblog, 1)
-            qTable = learn.updateTable(qTable, oblog, 2)
-            xwin += 1
-            return qTable
-        elif jadge == "o":
-            qTable = learn.updateTable(qTable, oblog, 1)
-            qTable = learn.updateTable(qTable, xblog, 2)
-            owin += 1
-            return qTable
-
-    qTable = learn.updateTable(qTable, xblog, 3)
-    qTable = learn.updateTable(qTable, oblog, 3)
-    print("draw")
-    draw += 1
-    return qTable
+    return 0
 
 
 def main():
     global xwin
     global owin
     global draw
-
-    qTable = learn.createQTable(9)
+    global xqTable
+    global oqTable
 
     # select for first attacker and second attacker
     fp = 3  # common.xSelect()
@@ -124,20 +80,14 @@ def main():
     lt = 100000
 
     for i in tqdm(range(lt)):
-        qTable = gameloop(qTable, fp, sp)
+        gameloop(fp, sp, 1)
 
-    print("\n")
-
-    fp = 1
-    sp = 3
-    qTable = gamewith(qTable, fp, sp)
-
-    fp = 3
-    sp = 1
-    qTable = gamewith(qTable, fp, sp)
+    for i in range(lt):
+        fp = common.xSelect()
+        sp = common.oSelect()
+        gameloop(fp, sp, 0)
 
     # numpy.set_printoptions(threshold=numpy.inf)
-    print(qTable)
     print("xwin: " + str(xwin))
     print("owin: " + str(owin))
     print("draw: " + str(draw))

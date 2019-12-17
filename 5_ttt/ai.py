@@ -18,7 +18,7 @@ def codeAINP(board, qTable):
     for i in range(len(opt)):
         if opt[i] > cache:
             code = i
-        elif opt[i] == cache and random.randint(0, 1) == 0:
+        elif opt[i] == cache and random.randint(0, 10000)%2 == 0:
             code = i
 
     if random.randint(0,5)==0:
