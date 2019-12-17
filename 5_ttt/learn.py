@@ -19,11 +19,11 @@ def updateTable(qTable, blog, win):
         column = blog[i][1]
         row = findRow(board)
         if win==1:
-            qTable[row, column] += 2/len(blog)
-        elif win==2:
-            qTable[row, column] -= 2/len(blog)
-        else:
             qTable[row, column] += 1/len(blog)
+        elif win==2:
+            qTable[row, column] -= 1/len(blog)
+        else:
+            qTable[row, column] += 0
 
     return qTable
 

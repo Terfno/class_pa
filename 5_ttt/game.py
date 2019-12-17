@@ -82,12 +82,13 @@ def main():
     for i in tqdm(range(lt)):
         gameloop(fp, sp, 1)
 
-    for i in range(lt):
-        fp = common.xSelect()
-        sp = common.oSelect()
-        gameloop(fp, sp, 0)
+    # for i in range(lt):
+    #     fp = common.xSelect()
+    #     sp = common.oSelect()
+    #     gameloop(fp, sp, 0)
 
-    # numpy.set_printoptions(threshold=numpy.inf)
+    numpy.set_printoptions(threshold=numpy.inf)
+    print(xqTable)
     print("xwin: " + str(xwin))
     print("owin: " + str(owin))
     print("draw: " + str(draw))
