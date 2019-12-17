@@ -1,5 +1,6 @@
 import math
 
+
 def printB(board):
     width = int(math.sqrt(len(board)))
     for i in range(len(board)):
@@ -34,12 +35,8 @@ def isFin(board):
         oset = list(set(osub) & set(win[i]))
 
         if len(xset) == 3:
-            print(xset)
-            print("> win x player!")
-            return True
+            return True, "x"
         elif len(oset) == 3:
-            print(oset)
-            print("> win o player!")
-            return True
+            return True, "o"
 
-    return False
+    return False, None
