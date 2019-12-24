@@ -15,7 +15,9 @@ def main():
             board = human.inputPlayer(board, "o")
 
         printB(board)
-        if isFin(board):
+        jadge, winner = isFin(board)
+        if jadge:
+            print("winner: "+winner)
             return 0
 
     print("draw")
