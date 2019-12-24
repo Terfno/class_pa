@@ -1,6 +1,11 @@
-def inputPlayer(board, symbol):
+import common
+
+
+# input for human
+def inputer(board, symbol):
     player = int(
-        input("\n> where would you like to put your symbol '" + symbol + "' : "))
+        input("\n> Where would you like to put your symbol '" + symbol + "'? : "))
     print("")
-    board[player-1] = symbol
-    return board
+    code = player-1
+
+    return common.inputPlayer(board, symbol, code)
