@@ -23,7 +23,7 @@ def gameLoop(fp, sp):
                 board = common.inputer(board, "x", fp)
         else:
             if sp == 3:
-                board = ai.inputer(board, "o", blog)
+                board = ai.codeAI(board, qTable)
             else:
                 board = common.inputer(board, "o", sp)
 
