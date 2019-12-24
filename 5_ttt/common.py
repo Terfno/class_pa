@@ -5,6 +5,7 @@ import learn
 import ai
 
 
+
 def printB(board):
     width = int(math.sqrt(len(board)))
     for i in range(len(board)):
@@ -46,6 +47,7 @@ def isFin(board):
         oset = list(set(osub) & set(win[i]))
 
         if len(xset) == 3:
+<<<<<<< HEAD
 
 
 def gameLoop(fp, sp):
@@ -100,3 +102,10 @@ def inputer(board, symbol, id):
         return human.inputer(board, symbol)
     elif id == 2:
         return randman.inputer(board, symbol)
+=======
+            return True, "x"
+        elif len(oset) == 3:
+            return True, "o"
+
+    return False, None
+>>>>>>> deb53b65edc4d6c52919af5462502606095434a6
