@@ -73,9 +73,14 @@ def jadge(my, enemy):  # 判定
         return 2
 
 
-def add_point(jadged, point):  # ポイント加算
+def update_point(jadged, point):  # ポイント加算
     add = [5, -3, 2]  # [draw, lose, win]
     return point + add[jadged]
+
+
+def update_count(jadged, counter):
+    counter[jadged] += 1
+    return counter
 
 
 def main():
@@ -87,22 +92,29 @@ def main():
     jadged = 0  # 今回の判定 0,1,2
     past_t = []  # 過去3手 履歴2戦略用
 
-    times = 10
+    times = 100
     point = 0
+
+    counter = [0, 0, 0]  # count for draw,lose,win
 
     for _ in range(times):
         myHand = hand_hist(hands, past_t)
         print("myhand:" + myHand)
 
-        enemyHand = input("Enemy's Hand(g:rock,p:paper,t:scissors): ")
+        # enemyHand = input("Enemy's Hand(g:rock,p:paper,t:scissors): ")
+        enemyHand = hand_random(hands)
 
         past.append(enemyHand)
         past_t.append(enemyHand)
         jadged = jadge(myHand, enemyHand)
 
-        point = add_point(jadged, point)
+        point = update_point(jadged, point)
+        counter = update_count(jadged, counter)
 
+    # result
     print(point)
+    print("[draw,lose,win]:"+str(counter))
+    print(Pattern)
 
 
 main()
