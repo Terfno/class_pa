@@ -95,7 +95,7 @@ def main():
     jadged = 0  # 今回の判定 0,1,2
     past_t = []  # 過去3手 履歴2戦略用
 
-    times = 100
+    times = 10
     point = 0
 
     counter = [0, 0, 0]  # count for draw,lose,win
