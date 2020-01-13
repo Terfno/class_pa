@@ -17,8 +17,11 @@ def hand_one(hands, n):  # 一筋n戦略
     return hands[n]
 
 
-def hand_copy(past, n):  # n手前ものまね戦略
-    return past[len(past) - 1 - n]
+def hand_copy(hands, past, n):  # n手前ものまね戦略
+    if len(past) < n:
+        return hand_random(hands)
+    else:
+        return past[len(past) - 1 - n]
 
 
 def hand_if(hands, jadged):  # 場合分け戦略
@@ -101,8 +104,7 @@ def main():
         myHand = hand_hist(hands, past_t)
         print("myhand:" + myHand)
 
-        # enemyHand = input("Enemy's Hand(g:rock,p:paper,t:scissors): ")
-        enemyHand = hand_random(hands)
+        enemyHand = input("Enemy's Hand(g:rock,p:paper,t:scissors): ")
 
         past.append(enemyHand)
         past_t.append(enemyHand)
