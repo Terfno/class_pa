@@ -17,7 +17,7 @@ def hand_copy(past, n):  # ものまね-n手前
     return past[len(past) - 1 - n]
 
 
-def hand_if(hands, jadge):  # 場合分け戦略
+def hand_if(hands, jadged):  # 場合分け戦略
     return hands[jadge]  # draw:0->rock, lose:1->paper, win:2->scissors
 
 
@@ -40,7 +40,7 @@ def main():
     hands = ["g", "p", "t"]
 
     past = []
-    jadge = 0
+    jadged = 0
 
     times = 10
     point = 0
@@ -50,7 +50,7 @@ def main():
         print("myhand:" + myHand)
         enemyHand = input("Enemy's Hand(g:rock,p:paper,t:scissors): ")
         past.append(enemyHand)
-        jadge = jadge(myHand, enemyHand)
+        jadged = jadge(myHand, enemyHand)
         point = add_point(jadge, point)
 
     print(point)
