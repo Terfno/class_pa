@@ -14,7 +14,11 @@ def hand_one(hands, n):  # 一筋戦法-n
 
 
 def hand_copy(past, n):  # ものまね-n手前
-    return past[len(past)-1-n]
+    return past[len(past) - 1 - n]
+
+
+def hand_if(hands, jadge):  # 場合分け戦略
+    return hands[jadge]  # draw:0->rock, lose:1->paper, win:2->scissors
 
 
 def jadge(my, enemy):  # 判定
@@ -34,7 +38,10 @@ def add_point(jadge, point):  # ポイント加算
 def main():
     # times = int(input("How many times do you play?:"))
     hands = ["g", "p", "t"]
+
     past = []
+    jadge = 0
+
     times = 10
     point = 0
 
@@ -43,7 +50,8 @@ def main():
         print("myhand:" + myHand)
         enemyHand = input("Enemy's Hand(g:rock,p:paper,t:scissors): ")
         past.append(enemyHand)
-        point = add_point(jadge(myHand, enemyHand), point)
+        jadge = jadge(myHand, enemyHand)
+        point = add_point(jadge, point)
 
     print(point)
 
