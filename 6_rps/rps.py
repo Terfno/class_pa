@@ -8,33 +8,13 @@ import copy
 Pattern = [0]*(3**3)  # 履歴2戦略用のテーブル
 
 
-def hand_random(hands):  # でたらめ戦略
-    r = random.randrange(0, len(hands))
-    return hands[r]
-
-
-def hand_one(hands, n):  # 一筋n戦略
-    return hands[n]
-
-
-def hand_copy(hands, past, n):  # n手前ものまね戦略
-    if len(past) < n:
-        return hand_random(hands)
-    else:
-        return past[len(past) - 1 - n]
-
-
-def hand_if(hands, jadged):  # 場合分け戦略
-    return hands[jadge]  # draw:0->rock, lose:1->paper, win:2->scissors
-
-
 def hand_hist(hands, st):  # 履歴2戦略
     global Pattern
 
     if len(st) == 3:  # patternの更新
         index = find_row(st)
         Pattern[index] += 1
-        _ = st.pop()
+        _ = st.pop(0)
 
     if len(st) == 2:  # 履歴2戦略ロジック部分
         stg = copy.copy(st)
@@ -100,13 +80,14 @@ def main():
 
     counter = [0, 0, 0]  # count for draw,lose,win
 
-    for _ in range(times):
+    for i in range(times):
         myHand = hand_hist(hands, past_t)
         print("myhand:" + myHand)
 
         enemyHand = input(
             "Enemy's Hand(g:rock,p:paper,t:scissors) or exit(e): ")
         if(enemyHand == "e"):
+            print("match time: "+str(i))
             break
 
         past.append(enemyHand)
@@ -117,9 +98,10 @@ def main():
         counter = update_count(jadged, counter)
 
     # result
-    print(point)
+    print("point: "+str(point))
     print("[draw,lose,win]:"+str(counter))
     print(Pattern)
 
 
-main()
+if __name__ == '__main__':
+    main()
